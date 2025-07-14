@@ -1,0 +1,55 @@
+================================================================================
+RELATÓRIO DE AVALIAÇÃO FINAL - CLASSIFICAÇÃO DE PARKINSON
+================================================================================
+
+🏆 MELHOR MODELO ENCONTRADO:
+  • Experimento: 5
+  • Iteração: 12
+  • Partícula: 17
+
+🏗️  ARQUITETURA DA REDE NEURAL:
+  • Número de camadas ocultas: 4
+  • Neurônios por camada: [128, 98, 128]
+  • Taxa de aprendizado: 0.100000
+  • Função de ativação: ReLU (ocultas), Sigmoid (saída)
+  • Regularização: BatchNormalization + Dropout(0.3)
+
+📊 RESULTADOS DA VALIDAÇÃO CRUZADA (5 folds):
+  • F1-Score:  0.8669 ± 0.0207
+  • Accuracy:  0.7692 ± 0.0397
+  • AUC-ROC:   0.5941 ± 0.1287
+
+🎯 MÉTRICAS GLOBAIS (todas as predições):
+  • F1-Score:  0.8665
+  • Accuracy:  0.7692
+  • AUC-ROC:   0.5628
+
+🔢 MATRIZ DE CONFUSÃO:p
+                 Predito
+              0      1
+  Real    0     4     44
+          1     1    146
+
+📈 MÉTRICAS DETALHADAS:
+  • Precisão:      0.7684
+  • Recall:        0.9932
+  • Especificidade: 0.0833
+  • Verdadeiros Positivos:  146
+  • Verdadeiros Negativos:  4
+  • Falsos Positivos:       44
+  • Falsos Negativos:       1
+
+📋 RESULTADOS POR FOLD:
+  Fold  1: F1=0.9062, Acc=0.8462, AUC=0.8259
+  Fold  2: F1=0.8696, Acc=0.7692, AUC=0.6444
+  Fold  3: F1=0.8529, Acc=0.7436, AUC=0.5000
+  Fold  4: F1=0.8529, Acc=0.7436, AUC=0.5000
+  Fold  5: F1=0.8529, Acc=0.7436, AUC=0.5000
+
+📊 INFORMAÇÕES DO DATASET:
+  • Total de amostras: 195
+  • Número de features: 22
+  • Classe 0 (Saudável): 48 (24.6%)
+  • Classe 1 (Parkinson): 147 (75.4%)
+
+================================================================================

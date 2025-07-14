@@ -219,7 +219,7 @@ def get_experiment_statistics():
             AVG(f1_score) as avg_f1_score,
             MAX(f1_score) as best_f1_score,
             MIN(f1_score) as worst_f1_score,
-            STDDEV(f1_score) as std_f1_score
+            SQRT(AVG(f1_score * f1_score) - AVG(f1_score)*AVG(f1_score)) AS std_f1_score
         FROM pso_resultados
     '''
     

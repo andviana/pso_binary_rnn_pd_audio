@@ -1,0 +1,6 @@
+Uso médio de CPU: 12.49
+Memória média (MB): 11957.67
+Tempo total médio (segundos): 5182.13
+Fitness médio: 0.1558
+Melhor fitness: 1.0000
+Média geral: 3430.6902

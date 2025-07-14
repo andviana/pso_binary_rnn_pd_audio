@@ -36,7 +36,7 @@ PSO_CONFIG = {
 }
 
 # Configurações do Banco de Dados
-DB_NAME = 'pso_parkinson.db'
+DB_NAME = 'database.db'
 
 # Configurações do Dataset
 DATA_CONFIG = {

@@ -18,28 +18,28 @@ Cada registro vocal foi caracterizado por 22 características acústicas categor
 O preprocessamento removeu todos os registros sintéticos, sendo utilizados somente os registros correspondetes a gravações reais. A divisão treino-validação utilizou estratificação para manter proporções de classe (80\%--20\%).
 
 ### Implementação do PSO
-## Arquitetura do Sistema PSO:
-O sistema PSO foi implementado na classe `PSOOptimizer`, operando sobre vetores de partícula 5-dimensionais:
 
-$$ 
-\mathbf{x} = [n_{\text{layers}}, \,n_1,\, n_2,\, n_3,\, \text{learning\_rate}] 
-$$
+## Arquitetura do Sistema PSO
 
-Onde:
-
-- \( n_{\text{layers}} \in \mathbb{N} \): número de camadas ocultas;  
-- \( n_1, n_2, n_3 \in \mathbb{N} \): neurônios por camada;  
-- \( \text{learning\_rate} \in [10^{-5}, 10^{-1}] \): taxa de
-  aprendizado do otimizador Adam.
-
-
-### Dinâmica das Partículas:
-A atualização de velocidade seguiu a formulação clássica do PSO:
+O sistema PSO foi implementado na classe `PSOOptimizer`, operando sobre
+vetores de partícula 5-dimensionais:
 
 $$
-v_i^{t+1} = w\,v_i^{t}
-            + c_1 r_1\,(p_i - x_i^{t})
-            + c_2 r_2\,(g - x_i^{t})
+\mathbf{x} = \bigl[n_{\text{layers}},\, n_1,\, n_2,\, n_3,\, \text{learning\_rate}\bigr]
+$$
+
+onde
+
+- \( n_{\text{layers}} \in \mathbb{N} \) — número de camadas ocultas  
+- \( n_1,\, n_2,\, n_3 \in \mathbb{N} \) — neurônios por camada  
+- \( \text{learning\_rate} \in [10^{-5},\,10^{-1}] \) — taxa de aprendizado do Adam  
+
+### Dinâmica das Partículas
+
+A atualização de velocidade segue a formulação clássica do PSO:
+
+$$
+v_i^{t+1} = w\,v_i^{t} + c_1\,r_1\,(p_i - x_i^{t}) + c_2\,r_2\,(g - x_i^{t})
 $$
 
 $$
@@ -48,7 +48,8 @@ $$
 
 com parâmetros \( w = 0.7 \) (inércia),
 \( c_1 = c_2 = 1.5 \) (coeficientes cognitivo/social) e
-\( r_1, r_2 \sim \mathcal{U}(0,1) \) (números aleatórios).
+\( r_1,\, r_2 \sim \mathcal{U}(0,1) \) (números aleatórios).
+
 
 ### População Inicial:
 A população inicial foi definida através de distribuição uniforme cobrindo o espaço de busca completo, armazenada em \texttt{populacao\_inicial.csv} para garantir reprodutibilidade. A população de 20 partículas incluiu configurações arquiteturais diversificadas, desde redes simples (1 camada, 8 neurônios) até complexas (4 camadas, 128 neurônios).

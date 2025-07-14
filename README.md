@@ -42,12 +42,12 @@ parkinson_pso_project/
 ### PSO
 - **Partículas**: 20 por experimento
 - **Dimensões**: 5 (n_layers, n1, n2, n3, learning_rate)
-- **Iterações**: 30 por experimento
+- **Iterações**: 20 por experimento
 - **Experimentos**: 32 independentes
 - **Parâmetros**: c1=1.5, c2=1.5, w=0.7
 
 ### Banco de Dados
-- **Nome**: pso_parkinson.db
+- **Nome**: database.db
 - **Tabelas**: pso_resultados, pso_execucao
 - **Armazenamento**: Todos os vetores e métricas desmembradas
 
@@ -196,62 +196,16 @@ O sistema monitora automaticamente:
 - **Convergência**: F1-score por iteração e experimento
 - **Tempo**: Duração total e por componente
 
-## 📁 Arquivos Gerados
-
-Após a execução completa:
-
-- `pso_parkinson.db` - Banco SQLite com todos os resultados
-- `pso_resultados.csv` - Dados detalhados das partículas
-- `pso_execucao.csv` - Resumo dos experimentos
-- `relatorio_avaliacao_final.txt` - Relatório completo
-- `matriz_confusao.png` - Visualização da matriz de confusão
 
 ## ⚡ Performance
 
-### Estimativas de Tempo
-- **Configuração completa**: ~2-4 horas (32×20×30 = 19.200 avaliações)
-- **Configuração de teste**: ~5-10 minutos (2×5×5 = 50 avaliações)
+### Resultados da Execução
+- Notebook (código) para Avaliação dos resultados obtidos pela otimização
+    - [relatorio_final.ipynb](relatorio_final.ipynb)
 
-### Recursos Necessários
-- **RAM**: ~2-4 GB
-- **CPU**: Qualquer processador moderno
-- **Disco**: ~100 MB para resultados completos
+- Relatório de Avaliação dos resultados obtidos pela otimização
+    - [relatorio_final.md](relatorio_final.md)
 
-## 🛠️ Personalização
-
-### Modificar Arquitetura da Rede
-Edite `model_utils.py` na função `create_neural_network()`.
-
-### Alterar Função de Fitness
-Modifique `fitness_function()` em `model_utils.py`.
-
-### Adicionar Novas Métricas
-Estenda `evaluate_model()` em `model_utils.py`.
-
-### Configurar Novos Parâmetros PSO
-Ajuste `PSO_CONFIG` em `config.py`.
-
-## 🐛 Solução de Problemas
-
-### Erro de Importação TensorFlow
-```bash
-pip install --upgrade tensorflow
-```
-
-### Erro de Memória
-Reduza o número de partículas ou experimentos em `config.py`.
-
-### Erro de tqdm.notebook
-O sistema usa automaticamente `tqdm` padrão se `tqdm.notebook` não estiver disponível.
-
-### Dataset com Status Contínuo
-O sistema converte automaticamente valores contínuos para binário usando threshold 0.5.
-
-## 📚 Referências
-
-- **PSO**: Kennedy, J., & Eberhart, R. (1995). Particle swarm optimization.
-- **Dataset**: Parkinson's Disease Classification Dataset
-- **Métricas**: F1-score para classificação binária desbalanceada
 
 ## 📄 Licença
 

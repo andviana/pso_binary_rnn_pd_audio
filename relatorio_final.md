@@ -21,13 +21,13 @@ O preprocessamento removeu todos os registros sintéticos, sendo utilizados some
 ## Arquitetura do Sistema PSO:
 O sistema PSO foi implementado na classe `PSOOptimizer`, operando sobre vetores de partícula 5-dimensionais:
 
-$$ \mathbf{x} = [n_{\text{layers}}, n_1, n_2, n_3, \text{learning\_rate}] $$
+$$ \mathbf{x} = [n_{\text{layers}}, n_1, n_2, n_3, \text{learning rate}] $$
 
 Onde:
 
 - $n_{\text{layers}} \in \mathbb{N}$: número de camadas ocultas.
 - $n_1, n_2, n_3 \in \mathbb{N}$: neurônios por camada.
-- $\text{learning\_rate} \in [10^{-5}, 10^{-1}]$: taxa de aprendizado Adam.
+- $\text{learning rate} \in [10^{-5}, 10^{-1}]$: taxa de aprendizado Adam.
 
 
 ### Dinâmica das Partículas:
@@ -38,10 +38,13 @@ $$ v_i^{t+1} = w \cdot v_i^t + c_1 \cdot r_1 \cdot (p_i - x_i^t) + c_2 \cdot r_2
 
 $$ x_i^{t+1} = x_i^t + v_i^{t+1} $$
 
-Com parâmetros: $w=0,7$ (inércia), $c_1 = c_2 = 1,5$ (coeficientes cognitivo/social), $r_1, r_2 \sim \mathcal{U}(0,1)$ (números aleatórios).
+Com parâmetros: 
+- $w=0,7$ (inércia)
+- $c_1 = c_2 = 1,5$ (coeficientes cognitivo/social),
+- $r_1, r_2 \sim \mathcal{U}(0,1)$ (números aleatórios).
 
 ### População Inicial:
-A população inicial foi definida através de distribuição uniforme cobrindo o espaço de busca completo, armazenada em \texttt{populacao\_inicial.csv} para garantir reprodutibilidade. A população de 20 partículas incluiu configurações arquiteturais diversificadas, desde redes simples (1 camada, 8 neurônios) até complexas (4 camadas, 128 neurônios).
+A população inicial foi definida através de distribuição uniforme cobrindo o espaço de busca completo, armazenada em `populacao_inicial.csv` para garantir reprodutibilidade. A população de 20 partículas incluiu configurações arquiteturais diversificadas, desde redes simples (1 camada, 8 neurônios) até complexas (4 camadas, 128 neurônios).
 
 ## Arquitetura da Rede Neural
 
@@ -92,15 +95,15 @@ PSO_CONFIG = {
 }
 ```
 
-Total de avaliações: $ 32 \times 20 \times 20 = 12.800 $ treinamentos de rede neural.
+Total de avaliações: $32 \times 20 \times 20 = 12.800$ treinamentos de rede neural.
 
 ### Função de Fitness
 
 A função objetivo minimizou:
-$$ f(\mathbf{x}) = 1 - \text{F1-score} $$
+$$f(\mathbf{x}) = 1 - \text{F1-score}$$
 O F1-score foi escolhido como métrica principal devido à sua robustez em conjuntos de dados desbalanceados, pois balanceia precisão e recall:
 
-$$ F1 = 2 \times \frac{\text{Precisão} \times \text{Recall}}{\text{Precisão} + \text{Recall}} $$
+$$F1 = 2 \times \frac{\text{Precisão} \times \text{Recall}}{\text{Precisão} + \text{Recall}}$$
 
 	
 $$ = \frac{TP}{TP + 0.5(FP+FN)} $$
@@ -113,16 +116,16 @@ $$ = \frac{TP}{TP + 0.5(FP+FN)} $$
 
 O vetor contínuo da partícula foi mapeado para hiperparâmetros discretos/contínuos conforme abaixo:
 
-$$ n_{\text{layers}} = \max(1,\; \min(4,\; \text{round}(x))) $$
-$$ \text{neurons}[i] = \max(8,\; \min(128,\; \text{round}(x[i+1]))) $$
-$$ \text{learning\_rate} = \max(10^{-5},\; \min(10^{-1},\; x)) $$
+$$n_{\text{layers}} = \max(1, \min(4, \text{round}(x)))$$
+$$\text{neurons}[i] = \max(8, \min(128, \text{round}(x[i+1])))$$
+$$\text{learning rate} = \max(10^{-5}, \min(10^{-1}, x))$$
 
 ## Armazenamento e Monitoramento
 
 Foi implementado um sistema de banco SQLite com duas tabelas principais:
 
-- pso\_resultados: dados individuais de partículas por iteração (posição, velocidade, pbest, fitness).
-- pso\_execucao: métricas agregadas por experimento (tempo, recursos, convergência).
+- pso_resultados: dados individuais de partículas por iteração (posição, velocidade, pbest, fitness).
+- pso_execucao: métricas agregadas por experimento (tempo, recursos, convergência).
 
 
 ### Tabela com dados da Execução:

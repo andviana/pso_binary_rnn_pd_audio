@@ -1939,6 +1939,38 @@ for iteracao in iteracoes_chave:
 
     
 ![png](relatorio_final_files/relatorio_final_25_4.png)
+
+
+```python
+from IPython.display import HTML
+import time
+
+timestamp = int(time.time())
+
+HTML(f"""
+<table>
+  <tr>
+     <td>
+      <div><img src="output/pca_evolution.gif?{timestamp}" width="600"></div>
+      <div style="text-align:center"><a href="output/pca_evolution.gif">Download</a></div>
+    </td>
+  </tr>
+</table>
+""")
+```
+
+
+
+
+
+<table>
+  <tr>
+     <td>
+      <div><img src="output/pca_evolution.gif?1752520812" width="600"></div>
+      <div style="text-align:center"><a href="output/pca_evolution.gif">Download</a></div>
+    </td>
+  </tr>
+</table>
     
 
 
